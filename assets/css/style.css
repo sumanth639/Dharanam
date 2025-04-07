@@ -914,7 +914,10 @@ img {
   float: left;
   padding-left: 20px;
 }
-
+.details h3 {
+  color: #f57d4a;
+  margin-bottom: 8px;
+}
 .tp-blog-sidebar .recent-post-widget .post h4 {
   font-size: 16px;
   line-height: 1.3em;
@@ -4007,6 +4010,9 @@ ul {
   }
 }
 
+.service-ul {
+  padding: 0 0 8px 8px;
+}
 /*==============================
 #0.8 tp-about-area
 ===============================*/
@@ -7586,6 +7592,75 @@ breadcumb-style
   display: none;
 }
 
+/* Make sure all icons inside features-icon are centered and padded */
+.features-icon {
+  margin-bottom: 20px; /* Adds space between icon and content */
+}
+.features-icon i {
+  width: 80px;
+  height: 80px;
+  background: #101010;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 80px;
+  font-size: 36px;
+  color: #bababa;
+  transition: 0.3s ease;
+  margin: 0 auto;
+  display: block;
+}
+
+/* On hover */
+.features-item-2:hover .features-icon i {
+  color: #ff5722;
+  transform: scale(1.1);
+}
+
+/* Optional: If you want a soft shadow and better spacing */
+.features-icon {
+  margin-bottom: 10px;
+  margin-left: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.features-content {
+  text-align: center;
+}
+
+.partner-button {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #f67d4a;
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  border: 2px solid #f67d4a;
+  font-size: 16px;
+  box-shadow: 0 2px 5px rgba(246, 125, 74, 0.3);
+  margin-top: 12px;
+}
+@media (min-width: 992px) {
+  .features-icon {
+    margin-left: 15px;
+  }
+}
+
+.partner-button:hover {
+  background-color: white;
+  color: #f67d4a;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(246, 125, 74, 0.4);
+}
+
+.partner-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 3px rgba(246, 125, 74, 0.4);
+}
 /*----------------------------------------------
 end*
 -----------------------------------------------*/
