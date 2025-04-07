@@ -739,7 +739,6 @@
   /*------------------------------------------
         = CONTACT FORM SUBMISSION
     // -------------------------------------------*/
-  // JavaScript for form handling
   if ($('#contact-form').length) {
     $('#contact-form').validate({
       rules: {
@@ -761,50 +760,17 @@
         email: 'Please enter a valid email address',
         phone: 'Please enter your phone number',
         address: 'Please enter your address',
-        note: 'Please enter a case description',
+        note: 'Please enter your case description',
       },
 
       submitHandler: function (form) {
         $('#loader').show();
 
-        // Option 1: Let the form submit naturally (recommended)
+        // Let the form submit normally to the Web3Forms endpoint
+        // This avoids CORS issues that can occur with AJAX
         form.submit();
 
-        // Option 2: If you still want to use AJAX (alternative approach)
-        /*
-        var formData = new FormData(form);
-        
-        fetch('https://api.web3forms.com/submit', {
-          method: 'POST',
-          body: formData,
-        })
-          .then(response => response.json())
-          .then(data => {
-            $('#loader').hide();
-            if (data.success) {
-              $('#success').slideDown('slow');
-              setTimeout(function () {
-                $('#success').slideUp('slow');
-              }, 3000);
-              form.reset();
-            } else {
-              $('#error').slideDown('slow');
-              setTimeout(function () {
-                $('#error').slideUp('slow');
-              }, 3000);
-            }
-          })
-          .catch(error => {
-            $('#loader').hide();
-            $('#error').slideDown('slow');
-            setTimeout(function () {
-              $('#error').slideUp('slow');
-            }, 3000);
-            console.error('Error:', error);
-          });
-        
-        return false; // prevent default form submission
-        */
+        return true;
       },
     });
   }
