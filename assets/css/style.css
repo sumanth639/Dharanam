@@ -5355,7 +5355,7 @@ breadcumb-style
 ------------------------------------------------------------------*/
 
 .tp-breadcumb-area {
-  background: url(../images/breadcumb/img-1.jpg) no-repeat center top / cover;
+  background: url(../images/breadcumb/1.png) no-repeat center top / cover;
   min-height: 350px;
   position: relative;
   display: flex;
@@ -5363,6 +5363,9 @@ breadcumb-style
   flex-direction: column;
   z-index: 1;
 }
+/* .tp-breadcumb-area.about-section {
+  background: url(../images/breadcumb/1.png) no-repeat center top / cover;
+} */
 
 .tp-breadcumb-area:before {
   position: absolute;
