@@ -739,6 +739,7 @@
   /*------------------------------------------
         = CONTACT FORM SUBMISSION
     // -------------------------------------------*/
+  // JavaScript for form handling
   if ($('#contact-form').length) {
     $('#contact-form').validate({
       rules: {
@@ -766,15 +767,21 @@
       submitHandler: function (form) {
         $('#loader').show();
 
-        // Use AJAX to POST to Web3Forms
-        $.ajax({
-          type: 'POST',
-          url: 'https://api.web3forms.com/submit',
-          data: $(form).serialize(),
-          dataType: 'json',
-          success: function (response) {
+        // Option 1: Let the form submit naturally (recommended)
+        form.submit();
+
+        // Option 2: If you still want to use AJAX (alternative approach)
+        /*
+        var formData = new FormData(form);
+        
+        fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: formData,
+        })
+          .then(response => response.json())
+          .then(data => {
             $('#loader').hide();
-            if (response.success === true) {
+            if (data.success) {
               $('#success').slideDown('slow');
               setTimeout(function () {
                 $('#success').slideUp('slow');
@@ -786,17 +793,18 @@
                 $('#error').slideUp('slow');
               }, 3000);
             }
-          },
-          error: function () {
+          })
+          .catch(error => {
             $('#loader').hide();
             $('#error').slideDown('slow');
             setTimeout(function () {
               $('#error').slideUp('slow');
             }, 3000);
-          },
-        });
-
+            console.error('Error:', error);
+          });
+        
         return false; // prevent default form submission
+        */
       },
     });
   }
