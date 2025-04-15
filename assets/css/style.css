@@ -7664,3 +7664,57 @@ breadcumb-style
 /*----------------------------------------------
 end*
 -----------------------------------------------*/
+/* File upload custom styling */
+.file-upload-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.file-upload-wrapper input[type='file'] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 45px;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.file-upload-wrapper .file-upload-label {
+  position: relative;
+  width: 100%;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 15px;
+  background: #262525;
+  color: #555;
+  border: 1px solid #262525;
+  cursor: pointer;
+}
+
+.file-upload-wrapper .file-upload-label i {
+  font-size: 20px;
+}
+
+.file-upload-wrapper input[type='file']:focus + .file-upload-label {
+  border: 1px solid #262525;
+  outline: none;
+}
+
+/* Ensure consistent styling with other form elements */
+.volunteer-contact-form h5 {
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #fff;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+  .file-upload-wrapper,
+  .file-upload-wrapper .file-upload-label {
+    width: 100%;
+  }
+}
