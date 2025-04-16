@@ -27,6 +27,173 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style>
+      /* General Styles */
+
+      /* Form Styles */
+      .volunteer-contact-form {
+        padding: 50px 40px;
+        background: #202120;
+        position: relative;
+        z-index: 1;
+        box-shadow: 0px 1px 14px 0px rgba(0, 0, 0, 0.15);
+      }
+
+      .volunteer-contact-form h2 {
+        margin-top: 0;
+        font-size: 36px;
+        text-align: center;
+        margin-bottom: 40px;
+        color: #fff;
+      }
+
+      .volunteer-contact-form h5 {
+        margin-bottom: 8px;
+        font-weight: 500;
+        color: #fff;
+      }
+
+      .volunteer-contact-form .form-group {
+        margin-bottom: 30px;
+      }
+
+      .volunteer-contact-form form input,
+      .volunteer-contact-form form select,
+      .volunteer-contact-form form label,
+      .volunteer-contact-form form textarea {
+        border: none;
+        border: 1px solid #262525;
+        padding-left: 15px;
+        height: 45px;
+        border-radius: 0;
+        background: #262525;
+        color: #555;
+      }
+
+      .volunteer-contact-form form textarea {
+        height: 120px;
+      }
+
+      .volunteer-contact-form form input:focus,
+      .volunteer-contact-form form textarea:focus {
+        box-shadow: none;
+        outline: none;
+        border: 1px solid #262525;
+        color: #898888;
+      }
+
+      .volunteer-contact-form form label {
+        line-height: 40px;
+        font-weight: 400;
+        font-size: 14px;
+        width: 100%;
+      }
+
+      /* File Upload Styles */
+      .file-upload-wrapper {
+        position: relative;
+        width: 100%;
+      }
+
+      .file-upload-wrapper input[type='file'] {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 45px;
+        opacity: 0;
+        cursor: pointer;
+        z-index: 2;
+      }
+
+      .file-upload-wrapper .file-upload-label {
+        position: relative;
+        width: 100%;
+        height: 45px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 15px;
+        background: #262525;
+        color: #555;
+        cursor: pointer;
+      }
+
+      .file-upload-wrapper .file-upload-label i {
+        font-size: 20px;
+      }
+
+      .file-upload-wrapper input[type='file']:focus + .file-upload-label {
+        border: 1px solid #262525;
+        outline: none;
+      }
+
+      /* Button Styles */
+      .theme-btn {
+        border: none;
+      }
+
+      .volunteer-contact-form .submit-area {
+        text-align: center;
+      }
+
+      /* Loader Styles */
+      #loader {
+        display: none;
+        margin-left: 10px;
+        animation: spin 1s infinite linear;
+        color: #fff;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Success/Error Messages */
+      .error-handling-messages div {
+        display: none;
+        padding: 10px;
+        margin-top: 15px;
+        border-radius: 0;
+        text-align: center;
+      }
+
+      #success {
+        background: #4caf50;
+        color: white;
+      }
+
+      #error {
+        background: #f44336;
+        color: white;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 767px) {
+        .volunteer-contact-form {
+          margin-top: 0px;
+          padding: 14px 16px;
+        }
+
+        .volunteer-contact-form h2 {
+          font-size: 23px;
+        }
+
+        .volunter-img img {
+          min-height: 100%;
+        }
+
+        .file-upload-wrapper,
+        .file-upload-wrapper .file-upload-label {
+          width: 100%;
+        }
+      }
+    </style>
   </head>
 
   <body>
@@ -132,26 +299,13 @@
       <div class="volunteer-area">
         <div class="volunteer-wrap section-padding">
           <div class="container">
-            <div class="row">
-              <div class="col-md-6 col-md-offset-3">
-                <div class="section-title section-title2 text-center">
-                  <div class="thumb-text">
-                    <span>Volunteer</span>
-                  </div>
-                  <h2>Become a Volunteer</h2>
-                  <p>
-                    It is a long established fact that reader distracted by the
-                    the readable content off page looking at its layout point.
-                  </p>
-                </div>
-              </div>
-            </div>
+            <div class="row"></div>
             <div class="row">
               <div class="col-md-6">
                 <div class="volunteer-item">
                   <div class="volunteer-img-wrap">
                     <div class="volunter-img">
-                      <img src="assets/images/volunteer.jpg" alt="" />
+                      <img src="assets/images/volunteer.jpg" alt="Volunteer" />
                     </div>
                   </div>
                 </div>
@@ -159,8 +313,12 @@
               <div class="col-md-6">
                 <div class="volunteer-contact">
                   <div class="volunteer-contact-form">
-<form class="content-form" id="join-form" method="POST" enctype="multipart/form-data" >
-
+                    <form
+                      class="content-form"
+                      id="join-form"
+                      method="POST"
+                      enctype="multipart/form-data"
+                    >
                       <input
                         type="hidden"
                         name="website"
@@ -493,7 +651,7 @@
     <!-- Form submit jooin us -->
     <script>
       document
-        .getElementById('contact-form')
+        .getElementById('join-form') // Changed from 'contact-form' to 'join-form' to match HTML
         .addEventListener('submit', async function (event) {
           event.preventDefault();
           const formElem = this;
@@ -508,6 +666,7 @@
 
           try {
             // Show loading state
+            buttonElem.disabled = true; // Disable button to prevent multiple submissions
             buttonElem.textContent = 'Sending Message...';
             loader.style.display = 'inline-block';
 
@@ -534,8 +693,13 @@
               // Reset form
               formElem.reset();
 
+              // Reset file input display
+              document.querySelector('.file-upload-text').textContent =
+                'Choose a file';
+
               // Reset button text
               buttonElem.textContent = 'Send Message';
+              buttonElem.disabled = false; // Re-enable button
               loader.style.display = 'none';
 
               // Hide success message after delay
@@ -551,12 +715,14 @@
             document.getElementById('error').style.display = 'none';
 
             // Show custom error message
-            successAlert.innerText = error.message;
+            successAlert.innerText =
+              error.message || 'An error occurred. Please try again later.';
             successAlert.style.backgroundColor = '#f44336';
             successAlert.style.display = 'block';
 
             // Reset button text
             buttonElem.textContent = 'Send Message';
+            buttonElem.disabled = false; // Re-enable button
             loader.style.display = 'none';
 
             // Hide error message after delay

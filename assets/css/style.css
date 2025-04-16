@@ -7691,7 +7691,7 @@ end*
   padding: 0 15px;
   background: #262525;
   color: #555;
-  border: 1px solid #262525;
+  /* border: 1px solid #262525; */
   cursor: pointer;
 }
 
